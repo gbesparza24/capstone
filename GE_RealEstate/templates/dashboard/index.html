@@ -1,8 +1,9 @@
 {% extends 'dashboard/base.html' %}
 {% load humanize %}
 
+
+
 {% block content %}
-{% csrf_token %}
 
 <section id="showcase">
     <div class="container text-center">
@@ -25,7 +26,7 @@
               <div class="form-row">
                 <div class="col-md-12 mb-6">
                   <label class="sr-only">State</label>
-                  <select  v-model="state" name="state" class="form-control">
+                  <select  v-model="state" name="state" class="form-control" placeholder="State">
                     <option selected="true" disabled="disabled">State </option>
                     <option value="AL">Alabama</option>
                     <option value="AK">Alaska</option>
@@ -87,6 +88,8 @@
       </div>
     </div>
   </section>
+
+  
 
   <section id="services" class="py-5 bg-secondary text-white">
     <div class="container">

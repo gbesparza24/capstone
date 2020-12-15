@@ -7,21 +7,14 @@ import requests
 
 def index(request):
 
-    listings = Listing.objects.all()
-
-    context = {
-        'listings' : listings
-    }
-
-    return render(request, 'dashboard/index.html', context)
+    return render(request, 'dashboard/index.html')
     
 
 def about(request):
 
-    return render(request, 'dashboard/about.html', context)
+    return render(request, 'dashboard/about.html')
 
 def listings(request):
-
 
     return render(request, 'dashboard/listings.html')
 

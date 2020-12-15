@@ -5,8 +5,10 @@ let app = new Vue({
         city: '',
         state:'',
         info: '',
+        date:'',
     },
     methods: {
+
         getData: async function(){
             
             let url = 'https://realtor.p.rapidapi.com/properties/v2/list-for-sale'
@@ -27,9 +29,25 @@ let app = new Vue({
             }
 
             let response = await axios.get(url, options)
-
+            console.log('hello')
             this.info = response.data.properties
         },
+    
 
-    }
+    },
+    created: function(){
+        let d = new Date()
+        if (window.location.search.length > 1){
+          let params = new URLSearchParams(window.location.search) 
+          this.city = params.get('city') 
+          this.state = params.get('state')
+          
+          this.getData()
+          this.date = d.getFullYear()
+        }
+    },
+
+    
+
+    
 })

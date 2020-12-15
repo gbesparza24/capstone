@@ -2,43 +2,35 @@
 
 {% load static %}
 
+
 {% block content %}
-<div v-for="i in info">
-    <div class="col-md-6 col-lg-4 mb-4">
-        <div class="card listing-preview">
-            <div class="card-body">
-                <div class="listing-heading text-center">
-                    <h4 class="text-primary">[[ i.address.line]],[[ i.address.city]], [[ i.address.state]],
-                        [[ i.address.postal_code]]</h4>
-                    <p>
-                        <i class="fas fa-map-marker text-secondary"></i> [[ i.address.city]], [[ i.address.state]],
-                        [[ i.address.postal_code]]</p>
+<section id="listings" class="py-4">
+    <div v-for="i in info">
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card listing-preview">
+                <img class="card-img-top" :src="[[ i.thumbnail]]" alt="">
+                <div class="card-body">
+                    <div class="listing-heading text-center">
+                        <h4 class="text-primary">[[ i.address.line]],[[ i.address.city]], [[ i.address.state]],
+                            [[ i.address.postal_code]]</h4>
+
+                    </div>
+                    <hr>
+                    <div class="row py-2 text-secondary">
+                        <div class="col-6">
+                            <i class="fas fa-dollar-sign"></i> price:$[[ i.price]]</div>
+                        <div v-if="i.building_size" class="col-6">
+                            <i class="fas fa-th-large"></i> Sqft: [[ i.building_size.size]]</div>
+                    </div>
+                    <div class="row py-2 text-secondary">
+                        <div class="col-6">
+                            <i class="fas fa-bed"></i> Rooms: [[ i.beds]]</div>
+                        <div class="col-6">
+                            <i class="fas fa-bath"></i>Bathrooms: [[ i.baths]]</div>
+                    </div>
+                    <hr>
                 </div>
-                <hr>
-                
-                <div class="row py-2 text-secondary">
-                    <div class="col-6">
-                        <i class="fas fa-th-large"></i> price: [[ i.price]]</div>
-                    <div class="col-6">
-                        <i class="fas fa-th-large"></i> Sqft: [[ i.building_size.size]]</div>
-                </div>
-                <div class="row py-2 text-secondary">
-                    <div class="col-6">
-                        <i class="fas fa-bed"></i> Rooms: [[ i.beds]]</div>
-                    <div class="col-6">
-                        <i class="fas fa-bath"></i>Bathrooms: [[ i.baths]]</div>
-                </div>
-                <hr>
-                <div class="row py-2 text-secondary">
-                    <div class="col-12">
-                        <i class="fas fa-user"></i> Realtor: [[ i.agents.name]]</div>
-                </div>
-                <div class="row text-secondary pb-2">
-                    <div class="col-6">
-                        <i class="fas fa-clock"></i> [[ i.last_update]]</div>
-                </div>
-                <hr>
             </div>
         </div>
-  </div>
+</section>
 {% endblock %}
